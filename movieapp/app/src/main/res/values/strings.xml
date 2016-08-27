@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">movieapp</string>
+    <string-array name="movies">
+        <item>RIDE ALONG 2 :AGAIN</item>
+        <item>DEADPOOL</item>
+        <item>BATMAN VS SUPERMAN</item>
+        <item>THE JUNGLE BOOK</item>
+        <item>CAPTAIN AMERICA:CIVIL WAR</item>
+        <item>X-MEN:APOCALYPSE</item>
+        <item>SUICIDE SQUAD</item>
+        <item>DOCTOR STRANGE</item>
+        <item>ROGUE ONE:A STAR WARS STORY</item>
+    </string-array>
+    <string-array name="RATINGS">
+        <item>RATING:6.4/10</item>
+        <item>RATING:8.1/10</item>
+        <item>RATING:7.1/10</item>
+        <item>RATING:8.2/10</item>
+        <item>RATING:8.2/10</item>
+        <item>RATING:7.3/10</item>
+        <item>RATING:7.2/10</item>
+        <item>RATING:NA</item>
+        <item>RATING:NA</item>
+    </string-array>
+</resources>
