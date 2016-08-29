@@ -20,15 +20,18 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView;
     Button button;
+    Button button1;
     ImageView imageView;
     static final int requestcode = 1;
+    static final int requestcode1 = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = (Button)findViewById(R.id.butt1);
-        textView = (TextView)findViewById(R.id.text_2);
+       // textView = (TextView)findViewById(R.id.text_2);
         imageView = (ImageView)findViewById(R.id.img1);
+        button1 = (Button)findViewById(R.id.butt2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +41,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(camera_intent,requestcode);
             }
         });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cam_intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                File file = getfile2();
+                cam_intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(file));
+                startActivityForResult(cam_intent,requestcode1);
+            }
+        });
+    }
+
+    private File getfile2()
+    {
+        File folder = new File("sdcard/cam_2");
+        if(!folder.exists())
+        {
+            folder.mkdir();
+        }
+        File video_file = new File(folder,"video_file.mp4");
+        return video_file;
     }
 
     private File getfile()
@@ -53,7 +76,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String path = "sdcard/cam_2/image_file.jpg";
-        imageView.setImageDrawable(Drawable.createFromPath(path));
+
+        if(requestCode == requestcode) {
+            String path = "sdcard/cam_2/image_file.jpg";
+            imageView.setImageDrawable(Drawable.createFromPath(path));
+        }
+        else if(requestCode == requestcode1) {
+            if(resultCode == RESULT_OK)
+            Toast.makeText(getApplicationContext(), "Recording SUCCESSFUL", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(getApplicationContext(),"Recording Unsuccessful",Toast.LENGTH_SHORT).show();
+        }
     }
 }
